@@ -34,61 +34,53 @@ En la pequeña y mediana industria retail de tecnología, el control manual de p
 ### 1.4 Recurso Principal
 * **`Product` (`Producto`):** Representa cada bien tecnológico en venta (nombre, SKU, precio, stock, categoría, disponibilidad y timestamps).
 
-### 1.5 Diagrama de Entidades Previstas para el Semestre
-```
-+-------------------------------------------------------------------------+
-|                                CATEGORY                                 |
-| - id: UUID (PK)                                                         |
-| - name: String (Unique)                                                 |
-| - description: String                                                   |
-+-------------------------------------------------------------------------+
-                                    | 1
-                                    |
-                                    | N
-+-------------------------------------------------------------------------+
-|                                PRODUCT                                  |
-| - id: UUID (PK)                                                         |
-| - name: String (Unique)                                                 |
-| - sku: String (Unique)                                                  |
-| - price: Decimal                                                        |
-| - stock: Integer                                                        |
-| - category: String                                                      |
-| - isAvailable: Boolean                                                  |
-| - createdAt: Timestamp                                                  |
-| - updatedAt: Timestamp                                                  |
-+-------------------------------------------------------------------------+
-                                    | 1
-                                    |
-                                    | N
-+-------------------------------------------------------------------------+
-|                              ORDER_ITEM                                 |
-| - id: UUID (PK)                                                         |
-| - orderId: UUID (FK)                                                    |
-| - productId: UUID (FK)                                                  |
-| - quantity: Integer                                                     |
-| - unitPrice: Decimal                                                    |
-+-------------------------------------------------------------------------+
-                                    | N
-                                    |
-                                    | 1
-+-------------------------------------------------------------------------+
-|                                 ORDER                                   |
-| - id: UUID (PK)                                                         |
-| - userId: UUID (FK)                                                     |
-| - total: Decimal                                                        |
-| - status: String                                                        |
-| - createdAt: Timestamp                                                  |
-+-------------------------------------------------------------------------+
-                                    | N
-                                    |
-                                    | 1
-+-------------------------------------------------------------------------+
-|                                 USER                                    |
-| - id: UUID (PK)                                                         |
-| - name: String                                                          |
-| - email: String (Unique)                                                |
-| - role: String                                                          |
-+-------------------------------------------------------------------------+
+```mermaid
+erDiagram
+    PRODUCT ||--o{ ORDER_ITEM : "contiene"
+    CATEGORY ||--o{ PRODUCT : "clasifica"
+    USER ||--o{ ORDER : "realiza"
+    ORDER ||--|{ ORDER_ITEM : "posee"
+
+    PRODUCT {
+        uuid id PK
+        string name
+        string sku UK
+        decimal price
+        int stock
+        string category
+        boolean isAvailable
+        timestamp createdAt
+        timestamp updatedAt
+    }
+
+    CATEGORY {
+        uuid id PK
+        string name UK
+        string description
+    }
+
+    USER {
+        uuid id PK
+        string name
+        string email UK
+        string role
+    }
+
+    ORDER {
+        uuid id PK
+        uuid userId FK
+        decimal total
+        string status
+        timestamp createdAt
+    }
+
+    ORDER_ITEM {
+        uuid id PK
+        uuid orderId FK
+        uuid productId FK
+        int quantity
+        decimal unitPrice
+    }
 ```
 
 ---
