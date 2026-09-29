@@ -281,7 +281,5 @@ Para verificar la persistencia exigida en la rúbrica:
 ---
 
 ## 👥 Integrantes del Grupo
-1. **[Nombre Integrante 1]**
-2. **[Nombre Integrante 2]**
-3. **[Nombre Integrante 3]**
-4. **[Nombre Integrante 4]**
+1. **Alonso Bailon Kevin Joel**
+

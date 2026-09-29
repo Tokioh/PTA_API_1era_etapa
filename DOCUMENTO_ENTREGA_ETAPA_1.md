@@ -13,10 +13,7 @@
 ---
 
 ## 👥 DATOS DE LOS INTEGRANTES
-1. **[Nombre y Apellidos del Integrante 1]**
-2. **[Nombre y Apellidos del Integrante 2]**
-3. **[Nombre y Apellidos del Integrante 3]**
-4. **[Nombre y Apellidos del Integrante 4]**
+1. **Alonso Bailon Kevin Joel**
 
 * **Enlace al Repositorio de GitHub:** `https://github.com/Tokioh/PTA_API_1era_etapa`
 
