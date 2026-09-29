@@ -18,7 +18,7 @@
 3. **[Nombre y Apellidos del Integrante 3]**
 4. **[Nombre y Apellidos del Integrante 4]**
 
-* **Enlace al Repositorio de GitHub:** `https://github.com/tu-usuario/PTA_API_1era_etapa`
+* **Enlace al Repositorio de GitHub:** `https://github.com/Tokioh/PTA_API_1era_etapa`
 
 ---
 
