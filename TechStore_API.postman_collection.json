@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "TechStore API - NestJS Etapa 1",
+		"description": "Colección de peticiones Postman para probar el CRUD del recurso Products en TechStore API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Crear Producto Exitoso (201)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Laptop ASUS ROG Strix G16\",\n  \"description\": \"Intel Core i7-13650HX, RTX 4060, 16GB RAM, 512GB SSD\",\n  \"price\": 1499.99,\n  \"stock\": 10,\n  \"sku\": \"LAP-ASUS-001\",\n  \"category\": \"Laptops\",\n  \"isAvailable\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Crear Producto Adicional (201)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Teclado Mecánico RGB Redragon\",\n  \"description\": \"Switch Blue, retroiluminación RGB\",\n  \"price\": 59.99,\n  \"stock\": 25,\n  \"sku\": \"TEC-RED-001\",\n  \"category\": \"Periféricos\",\n  \"isAvailable\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Error Validación DTO (400 Bad Request)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"L\",\n  \"price\": -50,\n  \"stock\": 5,\n  \"sku\": \"sku invalido!\",\n  \"campoExtra\": \"no permitido\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Listar Todos los Productos (200 OK)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Obtener Producto por ID (200 OK)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "AQUÍ_TU_UUID",
+							"description": "Reemplazar con el UUID de un producto existente"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Error Producto No Encontrado (404 Not Found)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products/00000000-0000-0000-0000-000000000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Actualizar Producto (PATCH 200 OK)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"price\": 1399.99,\n  \"stock\": 8\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "AQUÍ_TU_UUID",
+							"description": "Reemplazar con el UUID del producto a actualizar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Eliminar Producto (DELETE 200 OK)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "AQUÍ_TU_UUID",
+							"description": "Reemplazar con el UUID del producto a eliminar"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
